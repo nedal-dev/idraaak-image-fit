@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" role="img" aria-labelledby="title desc">
+  <title id="title">Contain and cover for a 1200 by 800 source</title>
+  <desc id="desc">Contain returns 500 by 333 inside a 500 by 375 box. Cover resizes to 563 by 375 and retains a centered 500 by 375 crop, removing 31 pixels on the left and 32 on the right.</desc>
+  <defs>
+    <clipPath id="crop"><rect x="570" y="60" width="500" height="375"/></clipPath>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c5e6f1"/><stop offset="1" stop-color="#edf7fb"/></linearGradient>
+    <g id="scene">
+      <rect width="1200" height="800" fill="url(#sky)"/>
+      <circle cx="960" cy="155" r="70" fill="#ffd166"/>
+      <path d="M0 620L350 260L650 580L860 350L1200 720V800H0Z" fill="#24577c"/>
+      <path d="M0 740L270 490L540 700L800 515L1200 800H0Z" fill="#55a790"/>
+    </g>
+  </defs>
+  <rect width="1100" height="480" fill="#fff"/>
+  <g font-family="Arial,sans-serif" fill="#15324b">
+    <text x="30" y="30" font-size="23" font-weight="bold">Contain: keep the whole image</text>
+    <text x="570" y="30" font-size="23" font-weight="bold">Cover: fill the box, then crop</text>
+    <rect x="30" y="60" width="500" height="375" fill="#e7ebef"/>
+    <use href="#scene" transform="translate(30 81) scale(0.4166666667 0.41625)"/>
+    <rect x="30" y="60" width="500" height="375" fill="none" stroke="#15324b" stroke-width="2"/>
+    <g clip-path="url(#crop)"><use href="#scene" transform="translate(539 60) scale(0.4691666667 0.46875)"/></g>
+    <rect x="570" y="60" width="500" height="375" fill="none" stroke="#15324b" stroke-width="2"/>
+    <text x="30" y="465" font-size="20">500 x 333 inside 500 x 375 bounds</text>
+    <text x="570" y="465" font-size="20">563 x 375 resize; crop starts at x=31</text>
+  </g>
+</svg>
