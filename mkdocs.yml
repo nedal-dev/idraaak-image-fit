@@ -1,0 +1,37 @@
+site_name: Idraaak Image Fit
+site_description: Practical Rust examples for proportional image layouts, integer rounding, and centered crop coordinates.
+site_author: Idraaak
+site_url: !ENV [READTHEDOCS_CANONICAL_URL, '']
+repo_url: https://github.com/nedal-dev/idraaak-image-fit
+repo_name: Source code
+edit_uri: edit/main/docs/
+copyright: Copyright 2026 Idraaak. MIT license.
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - rust
+    - toml
+
+nav:
+  - Overview: index.md
+  - Getting started: getting-started.md
+  - Image layout recipes: recipes.md
+  - API and errors: reference.md
+
+markdown_extensions:
+  - tables
+  - fenced_code
+
+extra_css:
+  - assets/docs.css
+
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+  links:
+    not_found: warn
+    anchors: warn
+    unrecognized_links: warn
