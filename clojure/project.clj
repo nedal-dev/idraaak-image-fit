@@ -15,6 +15,7 @@
              :cljs {:dependencies [[org.clojure/clojurescript "1.11.132"]]}}
   :deploy-repositories
   [["clojars" {:url "https://repo.clojars.org"
-               :username :env/clojars-username
-               :password :env/clojars-token
+               :username :env/clojars_username
+               :password :env/clojars_token
                :sign-releases false}]])
+
