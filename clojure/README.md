@@ -6,7 +6,7 @@ Created for [Idraaak](https://idraaak.com/), a technology publication. MIT licen
 
 ## Status
 
-Version 0.1.0 is being prepared for Clojars. It is not yet published; the dependency coordinates below become available after deployment. The Rust library at the repository root is a separate package and remains available.
+Version 0.1.0 was published to [Clojars](https://clojars.org/org.clojars.idraaak/idraaak-image-fit/versions/0.1.0) on 2026-10-11 after the JVM and ClojureScript tests, release build, and metadata verification passed. [API documentation](https://cljdoc.org/d/org.clojars.idraaak/idraaak-image-fit/0.1.0) is available on cljdoc. The Rust library at the repository root is a separate package and remains available.
 
 ## Dependency coordinates after publication
 
