@@ -1,0 +1,3 @@
+{:cljdoc/languages ["clj" "cljs"]
+ :cljdoc.doc/tree [["Readme" {:file "clojure/README.md"}]
+                   ["Publishing" {:file "clojure/PUBLISHING.md"}]]}
