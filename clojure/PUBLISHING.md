@@ -37,3 +37,8 @@ After successful deployment:
 - Update the README status, record the exact public URLs and verification results, disable the Clojars token, and remove the temporary GitHub secret.
 
 Stable versions are immutable. Correct a released version with a new version rather than attempting to replace `0.1.0`.
+
+
+## Release request — 2026-10-11
+
+Publication of version 0.1.0 was requested after preparing the Clojars account and deploy token. This records the release request only; publication must be confirmed by a successful deployment and the public Clojars artifact page.
