@@ -1,0 +1,65 @@
+name: Clojure image geometry
+
+on:
+  push:
+    paths:
+      - 'clojure/**'
+      - 'doc/cljdoc.edn'
+      - '.github/workflows/clojure-image-fit.yml'
+  pull_request:
+    paths:
+      - 'clojure/**'
+      - 'doc/cljdoc.edn'
+      - '.github/workflows/clojure-image-fit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  geometry:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: clojure
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install Leiningen
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y leiningen
+      - name: Test on the JVM
+        run: lein run -m idraaak.jvm-test-runner
+      - name: Compile ClojureScript tests
+        run: lein with-profile +cljs run -m cljs.main -O simple -t node -o target/cljs-tests.js -c idraaak.cljs-test-runner
+      - name: Test in Node.js
+        run: node target/cljs-tests.js
+      - name: Build release files
+        run: |
+          lein with-profile -dev jar
+          lein with-profile -dev pom
+      - name: Verify release metadata
+        run: python3 scripts/verify_release.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: clojure-image-fit-0.1.0-attempt-${{ github.run_attempt }}
+          path: |
+            clojure/target/idraaak-image-fit-0.1.0.jar
+            clojure/pom.xml
+          if-no-files-found: error
+      - name: Publish requested release to Clojars
+        if: github.event_name == 'push' && github.ref == 'refs/heads/clojure-image-fit' && contains(github.event.head_commit.message, '[publish-clojars]')
+        env:
+          CLOJARS_USERNAME: idraaak
+          CLOJARS_TOKEN: ${{ secrets.CLOJARS_DEPLOY_TOKEN }}
+        run: |
+          if [ -z "$CLOJARS_TOKEN" ]; then
+            echo "::error::Store CLOJARS_DEPLOY_TOKEN as a repository Actions secret before requesting this release."
+            exit 1
+          fi
+          lein with-profile -dev deploy clojars
