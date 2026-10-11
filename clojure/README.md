@@ -85,6 +85,7 @@ lein with-profile +cljs run -m cljs.main -O simple -t node -o target/cljs-tests.
 node target/cljs-tests.js
 lein with-profile -dev jar
 lein with-profile -dev pom
+python3 scripts/verify_release.py
 ```
 
 The tests cover the documented landscape and portrait examples, enlargement rules, invalid inputs, subpixel output, overflow, and geometry invariants across 256 source/target combinations on each runtime.
