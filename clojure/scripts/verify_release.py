@@ -11,7 +11,7 @@ pom = ET.parse("pom.xml").getroot()
 def value(path):
     return pom.findtext(path, namespaces=ns)
 
-assert value("m:groupId") == "io.github.nedal-dev"
+assert value("m:groupId") == "org.clojars.idraaak"
 assert value("m:artifactId") == "idraaak-image-fit"
 assert value("m:version") == "0.1.0"
 assert value("m:url") == "https://idraaak.com/"
@@ -30,7 +30,7 @@ with ZipFile(jar) as archive:
     assert "META-INF/LICENSE" in names
     assert not any("test_runner" in name or "image_fit_test" in name for name in names)
     embedded = ET.fromstring(
-        archive.read("META-INF/maven/io.github.nedal-dev/idraaak-image-fit/pom.xml")
+        archive.read("META-INF/maven/org.clojars.idraaak/idraaak-image-fit/pom.xml")
     )
     assert embedded.findtext("m:url", namespaces=ns) == "https://idraaak.com/"
     assert embedded.findtext("m:scm/m:tag", namespaces=ns) == revision

@@ -47,8 +47,19 @@ jobs:
         run: python3 scripts/verify_release.py
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: clojure-image-fit-0.1.0
+          name: clojure-image-fit-0.1.0-attempt-${{ github.run_attempt }}
           path: |
             clojure/target/idraaak-image-fit-0.1.0.jar
             clojure/pom.xml
           if-no-files-found: error
+      - name: Publish requested release to Clojars
+        if: github.event_name == 'push' && github.ref == 'refs/heads/clojure-image-fit' && contains(github.event.head_commit.message, '[publish-clojars]')
+        env:
+          CLOJARS_USERNAME: idraaak
+          CLOJARS_TOKEN: ${{ secrets.CLOJARS_DEPLOY_TOKEN }}
+        run: |
+          if [ -z "$CLOJARS_TOKEN" ]; then
+            echo "::error::Store CLOJARS_DEPLOY_TOKEN as a repository Actions secret before requesting this release."
+            exit 1
+          fi
+          lein with-profile -dev deploy clojars

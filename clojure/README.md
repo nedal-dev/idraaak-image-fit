@@ -13,13 +13,13 @@ Version 0.1.0 is being prepared for Clojars. It is not yet published; the depend
 Leiningen:
 
 ```clojure
-[io.github.nedal-dev/idraaak-image-fit "0.1.0"]
+[org.clojars.idraaak/idraaak-image-fit "0.1.0"]
 ```
 
 Clojure CLI:
 
 ```clojure
-{:deps {io.github.nedal-dev/idraaak-image-fit {:mvn/version "0.1.0"}}}
+{:deps {org.clojars.idraaak/idraaak-image-fit {:mvn/version "0.1.0"}}}
 ```
 
 For ClojureScript, include ClojureScript itself in your application as usual. The package contains one portable `.cljc` namespace and adds no image-processing dependencies.
@@ -90,4 +90,4 @@ python3 scripts/verify_release.py
 
 The tests cover the documented landscape and portrait examples, enlargement rules, invalid inputs, subpixel output, overflow, and geometry invariants across 256 source/target combinations on each runtime.
 
-See [publishing instructions](PUBLISHING.md) for Clojars account verification and deployment. Credentials are never required for tests or building.
+See [publishing instructions](PUBLISHING.md) for Clojars token setup and deployment. Credentials are never required for tests or building.

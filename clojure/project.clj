@@ -1,4 +1,4 @@
-(defproject io.github.nedal-dev/idraaak-image-fit "0.1.0"
+(defproject org.clojars.idraaak/idraaak-image-fit "0.1.0"
   :description "Exact integer contain and centered-cover image geometry for Clojure and ClojureScript."
   :url "https://idraaak.com/"
   :license {:name "MIT License"
